@@ -66,7 +66,7 @@ return {
                 draw = {
                     treesitter = { "lsp" },
                     columns = {
-                        { "kind_icon" },
+                        -- { "kind_icon" },
                         { "label", "label_description", gap = 1 },
                         { "source_name" },
                     },
@@ -76,7 +76,10 @@ return {
                 auto_show = true,
             },
             list = {
-                selection = "auto_insert", -- preselect, manual, auto_insert
+                -- selection = "auto_insert", -- preselect, manual, auto_insert
+                selection = function(ctx)
+                    return ctx.mode == "cmdline" and "auto_insert" or "preselect"
+                end,
             },
             ghost_text = {
                 enabled = true,

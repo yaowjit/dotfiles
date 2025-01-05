@@ -9,3 +9,5 @@ vim.g.dap_cpp_exec_dir = "build"
 vim.g.clangd_jobs = 8
 vim.g.clangd_pch_storage = "memory" ---@type 'disk'|'memory'
 vim.g.clangd_db_path = ".vscode"
+
+return {}

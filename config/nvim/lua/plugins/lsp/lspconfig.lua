@@ -1,8 +1,8 @@
 ---@type LazySpec
 return {
     "neovim/nvim-lspconfig",
-    -- event = { "BufReadPre", "BufNewFile" },
-    lazy = false,
+    event = { "BufReadPre", "BufNewFile" },
+    -- lazy = false,
     keys = {
         { "gr", vim.lsp.buf.rename, desc = "reanme symbol" },
         {

@@ -37,6 +37,15 @@ return {
             },
         }
     end,
+    config = function(_, opts)
+        require("fzf-lua").setup(opts)
+        require("fzf-lua").register_ui_select({
+            winopts = {
+                height = 20,
+                width = 0.50,
+            },
+        })
+    end,
     cmd = { "FzfLua" },
     keys = {
         { "<leader>f/", "<cmd>FzfLua <CR>", desc = "FzfLua self" },

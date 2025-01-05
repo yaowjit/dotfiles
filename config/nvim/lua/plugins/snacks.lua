@@ -63,6 +63,18 @@ return {
                 enabled = false,
             },
         },
+        input = {
+            enabled = true,
+            win = {
+                style = {
+                    relative = "cursor",
+                    title_pos = "left",
+                },
+            },
+        },
+        statuscolumn = {
+            enabled = true,
+        },
     },
     keys = {
         {

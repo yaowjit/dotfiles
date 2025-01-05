@@ -7,9 +7,9 @@ set nocompatible
 " let loaded_matchparen = 1 " set 1 to disable
 
 ".nvim.lua .nvimrc .exrc
-set exrc
+" set exrc
 " prefer to put project level settings in .lazy.lua
-" load order -> lazy.nvim -> .lazy.lua -> (load plugins) -> .nvim.lua
+" load order -> .lazy.lua -> lazy.nvim -> (load plugins) -> .nvim.lua
 
 filetype on
 syntax on
@@ -80,7 +80,7 @@ set backspace=eol,start,indent
 
 set textwidth=100
 " set linebreak
-set wrap
+set nowrap
 
 " 搜索
 set hlsearch
