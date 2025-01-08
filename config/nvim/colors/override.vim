@@ -6,6 +6,9 @@ highlight! CursorLine gui=underline cterm=underline
 " ColorColumn
 " highlight! ColorColumn guibg=gray
 
+" PmenuSel
+highlight! PmenuSel guibg=#569CD6 guifg=black
+
 " Window separator
 highlight! WinSeparator guifg=gray
 highlight! NvimTreeWinSeparator guifg=gray

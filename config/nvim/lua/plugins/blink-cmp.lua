@@ -27,6 +27,7 @@ return {
             ["<C-b>"] = {},
         },
         snippets = {
+            preset = "luasnip",
             expand = function(snippet)
                 require("luasnip").lsp_expand(snippet)
             end,
@@ -41,7 +42,7 @@ return {
             end,
         },
         sources = {
-            default = { "lsp", "path", "luasnip", "buffer" },
+            default = { "lsp", "path", "snippets", "buffer" },
             min_keyword_length = 0,
             providers = {
                 lsp = {
@@ -76,13 +77,17 @@ return {
                 auto_show = true,
             },
             list = {
-                -- selection = "auto_insert", -- preselect, manual, auto_insert
-                selection = function(ctx)
-                    return ctx.mode == "cmdline" and "auto_insert" or "preselect"
-                end,
+                selection = {
+                    preselect = function(ctx)
+                        return ctx.mode ~= "cmdline"
+                    end,
+                    auto_insert = function(ctx)
+                        return ctx.mode == "cmdline"
+                    end,
+                },
             },
             ghost_text = {
-                enabled = true,
+                enabled = false,
             },
         },
         signature = {
