@@ -83,7 +83,7 @@ alias grt='cd "$(git rev-parse --show-toplevel || echo .)"'
 gpull() {
     echo "pull from origin"
     local current_branch=$(git branch --show-current)
-    git pull origin $current_branch:$current_branch
+    git pull --rebase origin $current_branch:$current_branch
 }
 
 # dd

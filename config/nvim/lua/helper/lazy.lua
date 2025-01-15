@@ -26,6 +26,14 @@ local lazy_defaults = {
     },
 }
 
+---@generic T
+---@param key string
+---@param val T
+---@return T
+_G.OPT = function(key, val)
+    return vim.g[key] and vim.g[key] or val
+end
+
 ---@param ... LazyConfig
 M.setup = function(...)
     local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

@@ -34,4 +34,6 @@ servers.texlab = {}
 -- bash
 servers.bashls = {}
 
+servers.jsonls = {}
+
 return servers

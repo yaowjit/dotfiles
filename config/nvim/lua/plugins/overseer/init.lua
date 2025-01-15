@@ -26,4 +26,7 @@ return {
             },
         },
     },
+    keys = {
+        { "<C-b>", "<cmd>OverseerRun<CR>", desc = "OverseerRun" },
+    },
 }
