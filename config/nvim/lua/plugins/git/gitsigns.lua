@@ -2,36 +2,40 @@
 return {
     "lewis6991/gitsigns.nvim",
     event = { "BufRead", "BufNewFile" },
-    version = "*",
+    -- version = "*",
     opts = {
         current_line_blame = true,
         -- yadm = { enable = true },
         -- worktrees = {},
         -- keymapping
         on_attach = function(bufnr)
-            local keymap = vim.keymap.set
-            local opts = { buffer = bufnr }
+            local gitsigns = require("gitsigns")
+
+            local keymap = function(mode, l, r, opts)
+                opts = opts or {}
+                opts.buffer = bufnr
+                vim.keymap.set(mode, l, r, opts)
+            end
             -- open lazygit and gitui with toggleterm
             -- <leader>gl LazyGit
             -- <leader>gg GitUI
 
-            keymap("n", "gj", "<cmd>Gitsigns next_hunk<CR>", opts)
-            keymap("n", "gk", "<cmd>Gitsigns prev_hunk<CR>", opts)
-            keymap("n", "<leader>gj", "<cmd>Gitsigns next_hunk<CR>", opts)
-            keymap("n", "<leader>gk", "<cmd>Gitsigns prev_hunk<CR>", opts)
-            keymap("n", "<leader>gp", "<cmd>Gitsigns preview_hunk<CR>", opts)
+            -- stylua: ignore start
+            keymap("n", "gj", function() gitsigns.nav_hunk("next") end)
+            keymap("n", "gk", function () gitsigns.nav_hunk("prev") end)
+            keymap("n", "<leader>gj", function() gitsigns.nav_hunk("next") end)
+            keymap("n", "<leader>gk", function () gitsigns.nav_hunk("prev") end)
+            keymap("n", "<leader>gp", gitsigns.preview_hunk)
 
-            keymap("n", "<leader>gd", "<cmd>Gitsigns diffthis<CR>", opts)
-            keymap("n", "<leader>gs", "<cmd>Gitsigns stage_hunk<CR>", opts)
-            keymap("n", "<leader>gr", "<cmd>Gitsigns reset_hunk<CR>", opts)
-            keymap("n", "<leader>gu", "<cmd>Gitsigns undo_stage_hunk<CR>", opts)
-            keymap("n", "<leader>gS", "<cmd>Gitsigns stage_buffer<CR>", opts)
-            keymap("n", "<leader>gR", "<cmd>Gitsigns reset_buffer<CR>", opts)
+            keymap("n", "<leader>gd", gitsigns.diffthis)
+            keymap("n", "<leader>gs", gitsigns.stage_hunk)
+            keymap("n", "<leader>gr", gitsigns.reset_hunk)
+            keymap("n", "<leader>gS", gitsigns.stage_buffer)
+            keymap("n", "<leader>gR", gitsigns.reset_buffer)
 
-            keymap("n", "<leader>gD", "<cmd>lua require'gitsigns'.diffthis('~')<CR>", opts)
-
-            keymap({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", opts)
-            keymap({ "o", "x" }, "ah", ":<C-U>Gitsigns select_hunk<CR>", opts)
+            keymap({ "o", "x" }, "ih", gitsigns.select_hunk)
+            keymap({ "o", "x" }, "ah", gitsigns.select_hunk)
+            -- stylua: ignore end
         end,
     },
 }
