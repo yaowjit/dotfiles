@@ -2,7 +2,6 @@
 return {
     "echasnovski/mini.nvim",
     version = "*",
-    enabled = true,
     event = { "VeryLazy" },
     opts = {
         -- sub-plug: opts
@@ -12,20 +11,9 @@ return {
                 start_with_preview = "<leader>A",
             },
         },
-        -- cursorword = { delay = 100 },
-        -- surround = {
-        --     mappings = {
-        --         add = "ys",
-        --         delete = "ds",
-        --         find = "",
-        --         find_left = "",
-        --         highlight = "",
-        --         replace = "cs",
-        --         update_n_lines = "",
-        --         suffix_last = "",
-        --         suffix_next = "",
-        --     },
-        -- },
+        cursorword = { delay = 100 },
+        move = {}, -- M+hjkl
+        splitjoin = {}, -- gS
     },
     config = function(_, opts)
         for plug, opt in pairs(opts) do
