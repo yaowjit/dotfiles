@@ -1,0 +1,6 @@
+{
+  "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
+  "diagnostics.disable": ["redefined-local"],
+  "diagnostics.globals": ["vim", "describe", "Snacks"],
+  "runtime.version": "LuaJIT"
+}
