@@ -1,21 +1,13 @@
 -- vim:foldmethod=marker:
-local create_cmd = vim.api.nvim_create_user_command
 
 vim.g.autoformat = true
 
-create_cmd("BufDisableAutoFormat", function()
-    vim.b.autoformat = false
-end, {})
-create_cmd("BufEnableAutoFormat", function()
-    vim.b.autoformat = true
-end, {})
-
-create_cmd("DisableAutoFormat", function()
-    vim.g.autoformat = false
-end, {})
-create_cmd("EnableAutoFormat", function()
-    vim.g.autoformat = true
-end, {})
+vim.cmd([[
+    command! -nargs=0 BufEnableAutoFormat  let b:autoformat=v:true
+    command! -nargs=0 BufDisableAutoFormat let b:autoformat=v:false
+    command! -nargs=0 EnableAutoFormat     let g:autoformat=v:true
+    command! -nargs=0 DisableAutoFormat    let g:autoformat=v:false
+]])
 
 ---@type LazySpec
 return {
@@ -56,10 +48,14 @@ return {
             css = { "prettierd" },
         }, --}}}
         format_on_save = function(bufnr)
+            ---------- g:true  g:valse
+            -- nil                 x
+            --b:true
+            --b:false    x         x
             if
                 vim.bo.readonly --
                 or vim.b.autoformat == false
-                or vim.g.autoformat == false
+                or (vim.g.autoformat == false and vim.b.autoformat == nil)
             then
                 return
             end
@@ -74,6 +70,6 @@ return {
     },
     config = function(_, opts)
         require("conform").setup(opts)
-        create_cmd("Format", require("conform").format, { desc = "Format with conform" })
+        vim.api.nvim_create_user_command("Format", require("conform").format, { desc = "Format with conform" })
     end,
 }
