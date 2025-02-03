@@ -49,7 +49,10 @@ return {
             enabled = true,
             size = 2 * 1024 * 1024, -- 2MiB
         },
-        -- quickfile = { enabled = true },
+        quickfile = {
+            enabled = true,
+            exclude = { "latex" },
+        },
         indent = {
             enabled = true,
             animate = {
@@ -76,13 +79,9 @@ return {
             enabled = true,
         },
     },
+    -- stylua: ignore start
     keys = {
-        {
-            "<leader>q",
-            function()
-                Snacks.bufdelete()
-            end,
-            desc = "buf delete",
-        },
+        { "<leader>q", function() Snacks.bufdelete() end, desc = "buf delete" },
     },
+    -- stylua: ignore end
 }
