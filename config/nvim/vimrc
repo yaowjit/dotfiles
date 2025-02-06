@@ -194,12 +194,11 @@ nnoremap <leader>w <cmd>w<CR>
 nnoremap <leader>Q <cmd>copen<CR>
 
 " cut and paste
-" TODO:在展开snippet的时候会进入v模式,如果要输入p开头的单词会触发粘贴
 nnoremap x "_x
 nnoremap X "_X
 snoremap p i<BS>p
-vnoremap p P
-vnoremap P p
+xnoremap p P
+xnoremap P p
 inoremap <C-v> <C-o>p
 
 " format
