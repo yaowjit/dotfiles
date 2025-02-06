@@ -104,13 +104,13 @@ end
 M.select_env = function()
     vim.ui.select(PYTHON_ENVS, {
         prompt = "Python Env ❯ ",
-        format_item = function(choice)
-            return ("%-7s %-15s %-8s %s"):format(
-                choice.type,
-                choice.name,
-                choice.version,
-                choice.bin:gsub("^" .. vim.env.HOME, "~")
-            )
+        format_item = function(env)
+            local fmt = "%-7s %-15s %-8s %s"
+            if env.bin == PY_CURR_ENV.bin then
+                fmt = "%-6s* %-15s %-8s %s"
+            end
+
+            return fmt:format(env.type, env.name, env.version, env.bin:gsub("^" .. vim.env.HOME, "~"))
         end,
     }, M.set_env)
 end
