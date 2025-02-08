@@ -1,7 +1,7 @@
 ---@type LazySpec
 return {
     "sindrets/diffview.nvim",
-    cmd = { "DiffviewOpen", "DiffviewFileHistory", "DiffviewToggleFiles" },
+    event = { "VeryLazy" },
     opts = {
         enhanced_diff_hl = true, -- See ':h diffview-config-enhanced_diff_hl'
         file_panel = {
