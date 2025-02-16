@@ -7,9 +7,11 @@ return {
     },
     version = "*",
     ft = { "lua" },
-    enabled = function(root_dir)
-        -- return not vim.uv.fs_stat(root_dir .. "/.luarc.json")
-        return vim.g.lazydev_enabled == nil and true or vim.g.lazydev_enabled
+    enabled = function()
+        if vim.g.lazydev_enabled == true then
+            return true
+        end
+        return vim.fs.root(0, ".luarc.json") ~= nil
     end,
     opts = {
         library = {
