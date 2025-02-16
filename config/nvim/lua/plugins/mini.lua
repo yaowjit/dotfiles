@@ -12,7 +12,14 @@ return {
             },
         },
         cursorword = { delay = 100 },
-        move = {}, -- M+hjkl
+        move = {
+            mappings = {
+                line_left = "", -- disable in normal mode
+                line_right = "",
+                line_down = "",
+                line_up = "",
+            },
+        }, -- M+hjkl
         splitjoin = {}, -- gS
     },
     config = function(_, opts)
