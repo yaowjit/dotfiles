@@ -1,7 +1,9 @@
 ---@type LazySpec
 return {
     "mrjones2014/smart-splits.nvim",
-    config = true,
+    opts = {
+        log_level = "error",
+    },
     lazy = false,
     keys = {
         { "<C-h>", "<cmd>SmartCursorMoveLeft<CR>" },
