@@ -49,7 +49,7 @@ return {
                     score_offset = 3,
                 },
                 buffer = {
-                    async = true,
+                    async = false,
                     min_keyword_length = 1,
                 },
             },
@@ -78,12 +78,8 @@ return {
             },
             list = {
                 selection = {
-                    preselect = function(ctx)
-                        return ctx.mode ~= "cmdline"
-                    end,
-                    auto_insert = function(ctx)
-                        return ctx.mode == "cmdline"
-                    end,
+                    preselect = false,
+                    auto_insert = true,
                 },
             },
             ghost_text = {
