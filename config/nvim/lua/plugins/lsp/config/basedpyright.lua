@@ -2,7 +2,7 @@ return {
     settings = {
         python = {
             pythonPath = "python",
-            venvPath = "",
+            -- venvPath = "",
         },
         basedpyright = {
             disableLanguageServices = false,
@@ -25,7 +25,7 @@ return {
                     variableTypes = true,
                 },
                 logLevel = "Information",
-                stubPath = "typings",
+                -- stubPath = "typings",
                 typeCheckingMode = "recommended",
                 typeshedPaths = {},
                 useLibraryCodeForTypes = true,
