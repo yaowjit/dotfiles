@@ -13,7 +13,7 @@ return {
         -- { "<leader>d", vim.diagnostic.setqflist, desc = "diagnostics" }, -- open with quickfix
 
         -- { "ga", "<cmd>Lspsaga code_action<CR>", desc = "code_action" },
-        -- { "K", "<cmd>Lspsaga hover_doc<CR>", desc = "show document" },
+        { "K", "<cmd>Lspsaga hover_doc<CR>", desc = "show document" },
         { "gh", "<cmd>Lspsaga finder<CR>", desc = "preview definition" },
         { "gd", "<cmd>Lspsaga peek_definition<CR>", desc = "preview definition" },
         { "<C-LeftMouse>", "<cmd>Lspsaga finder<CR>", desc = "preview definition" },
