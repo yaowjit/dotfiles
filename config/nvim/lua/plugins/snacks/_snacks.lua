@@ -9,30 +9,15 @@ return {
             enabled = true,
             width = 50,
             preset = {
-                pick = "fzf-lua",
                 keys = {
-                    { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
-                    { icon = " ", key = "e", desc = "New File", action = ":ene | startinsert" },
-                    {
-                        icon = " ",
-                        key = "l",
-                        desc = "Find Text",
-                        action = ":lua Snacks.dashboard.pick('live_grep')",
-                    },
-                    {
-                        icon = " ",
-                        key = "m",
-                        desc = "Recent Files",
-                        action = ":lua Snacks.dashboard.pick('oldfiles')",
-                    },
-                    {
-                        icon = " ",
-                        key = "c",
-                        desc = "Config",
-                        action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
-                    },
-                    -- { icon = " ", key = "s", desc = "Restore Session", section = "session" },
-                    { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+                    -- stylua: ignore start
+                    { icon = " ", key = "f", desc = "Find File",    action = function() Snacks.picker.files() end },
+                    { icon = " ", key = "e", desc = "New File",     action = ":ene | startinsert" },
+                    { icon = " ", key = "l", desc = "Find Text",    action = function() Snacks.picker.grep() end },
+                    { icon = " ", key = "m", desc = "Recent Files", action = function() Snacks.picker.recent() end,                              },
+                    { icon = " ", key = "c", desc = "Config",       action = function() Snacks.picker.files({cwd=vim.fn.stdpath("config")}) end, },
+                    { icon = " ", key = "q", desc = "Quit",         action = ":qa" },
+                    -- stylua: ignore end
                 },
             },
             sections = {
@@ -79,9 +64,9 @@ return {
             enabled = true,
         },
     },
-    -- stylua: ignore start
     keys = {
+        -- stylua: ignore start
         { "<leader>q", function() Snacks.bufdelete() end, desc = "buf delete" },
+        -- stylua: ignore end
     },
-    -- stylua: ignore end
 }
