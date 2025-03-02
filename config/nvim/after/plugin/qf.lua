@@ -32,8 +32,6 @@ function _G.qftf(info)
                 else
                     fname = fname:gsub("^" .. vim.env.HOME, "~")
                 end
-                fname = require("fzf-lua.path").relative_to(fname, vim.uv.cwd())
-                fname = require("fzf-lua.path").shorten(fname, 3)
                 -- char in fname may occur more than 1 width, ignore this issue in order to keep performance
                 if #fname <= limit then
                     fname = fnameFmt1:format(fname)
