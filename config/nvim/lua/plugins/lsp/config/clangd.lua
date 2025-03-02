@@ -6,7 +6,7 @@ return {
         "--background-index",
         "--clang-tidy",
         "--function-arg-placeholders",
-        "--offset-encoding=utf-8",
+        "--offset-encoding=utf-16",
         unpack(OPT("clangd_extra_flags", {
             "--pch-storage=memory", -- memory/disk
             "--all-scopes-completion=true", -- true/false
@@ -16,7 +16,7 @@ return {
         })),
     },
     capabilities = {
-        offsetEncoding = { "utf-8" },
+        offsetEncoding = { "utf-16" },
     },
     -- on_attach = function(client, bufnr)
     --     -- require("clangd_extensions.inlay_hints").setup_autocmd()
