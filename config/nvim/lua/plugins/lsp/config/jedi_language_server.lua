@@ -5,7 +5,7 @@ return {
             nameExtractFunction = "jls_extract_def",
         },
         completion = {
-            disableSnippets = false,
+            disableSnippets = true,
             resolveEagerly = false,
             ignorePatterns = {},
         },
@@ -30,7 +30,7 @@ return {
             },
         },
         jediSettings = {
-            autoImportModules = { "numpy", "torch", "pandas", "pandas" },
+            autoImportModules = { "numpy", "torch", "pandas" },
             caseInsensitiveCompletion = true,
             debug = false,
         },
