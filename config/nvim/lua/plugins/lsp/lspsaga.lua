@@ -6,19 +6,7 @@ return {
         "nvim-tree/nvim-web-devicons",
     },
     event = { "LspAttach" },
-    keys = {
-        -- { "gr", vim.lsp.buf.rename, desc = "reanme symbol" },
-        -- { "[d", vim.diagnostic.goto_prev, desc = "diagnostics prev" },
-        -- { "]d", vim.diagnostic.goto_next, desc = "diagnostics next" },
-        -- { "<leader>d", vim.diagnostic.setqflist, desc = "diagnostics" }, -- open with quickfix
-
-        -- { "ga", "<cmd>Lspsaga code_action<CR>", desc = "code_action" },
-        { "K", "<cmd>Lspsaga hover_doc<CR>", desc = "show document" },
-        { "gh", "<cmd>Lspsaga finder<CR>", desc = "preview definition" },
-        { "gd", "<cmd>Lspsaga peek_definition<CR>", desc = "preview definition" },
-        { "<C-LeftMouse>", "<cmd>Lspsaga finder<CR>", desc = "preview definition" },
-        -- { "<C-t>", "<cmd>Lspsaga term_toggle<CR>", mode = { "n", "t" }, desc = "term_toggle" },
-    },
+    -- keys moved to lspconfig
     opts = {
         symbol_in_winbar = {
             enable = false,
