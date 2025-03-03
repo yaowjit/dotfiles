@@ -13,10 +13,7 @@ return {
         for ft, ft_config in pairs(require("plugins.dap.config.configurations")) do
             require("dap").configurations[ft] = ft_config
         end
-        require("dap.ext.vscode").load_launchjs(".vscode/launch.json", {
-            python = { "python" },
-            codelldb = { "c", "cpp", "rust" },
-        })
+
         vim.api.nvim_create_autocmd("FileType", {
             pattern = { "python", "c", "cpp" },
             callback = function(event)
