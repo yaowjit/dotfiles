@@ -11,8 +11,8 @@ return {
 
         { "gr", vim.lsp.buf.rename, desc = "reanme symbol" },
         -- { "gr", "<cmd>Lspsaga rename<CR>", desc = "reanme symbol" },
-        { "[d", "<cmd>Lspsaga diagnostic_jump_next<CR>", desc = "diagnostics prev" },
-        { "]d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", desc = "diagnostics next" },
+        { "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", desc = "diagnostics prev" },
+        { "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", desc = "diagnostics next" },
         { "ga", vim.lsp.buf.code_action, desc = "code action" },
         -- stylua: ignore end
     },
