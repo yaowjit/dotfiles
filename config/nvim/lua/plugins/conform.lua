@@ -37,6 +37,7 @@ return {
             tex = { "latexindent" },
             json5 = { "prettierd", "jq", stop_after_first = true },
             json = { "prettierd", "jq", stop_after_first = true },
+            toml = { "taplo" },
             -- prettierd
             markdown = { "prettierd" },
             yaml = { "prettierd" },
