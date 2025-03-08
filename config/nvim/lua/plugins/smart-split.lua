@@ -1,6 +1,7 @@
 ---@type LazySpec
 return {
     "mrjones2014/smart-splits.nvim",
+    version = "*",
     opts = {
         log_level = "error",
     },
