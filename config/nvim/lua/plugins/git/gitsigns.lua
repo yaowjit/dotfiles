@@ -2,10 +2,9 @@
 return {
     "lewis6991/gitsigns.nvim",
     event = { "BufRead", "BufNewFile" },
-    -- version = "*",
+    version = "*",
     opts = {
         current_line_blame = true,
-        -- yadm = { enable = true },
         -- worktrees = {},
         -- keymapping
         on_attach = function(bufnr)
