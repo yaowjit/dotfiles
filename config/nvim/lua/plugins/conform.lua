@@ -16,9 +16,6 @@ return {
     opts = {
         ---@type table<string, conform.FormatterConfigOverride|fun(bufnr:integer):nil|conform.FormatterConfigOverride>
         formatters = { --{{{
-            latexindent = {
-                append_args = { "-g", "/dev/null" },
-            },
             ruff_isort = {
                 command = vim.fn.exepath("ruff"),
                 args = { "check", "--select", "I", "--fix", "--stdin-filename", "$FILENAME" },
@@ -34,7 +31,7 @@ return {
             rust = { "rustfmt" },
             sh = { "shfmt" },
             bash = { "shfmt" },
-            tex = { "latexindent" },
+            tex = { "tex-fmt" },
             json5 = { "prettierd", "jq", stop_after_first = true },
             json = { "prettierd", "jq", stop_after_first = true },
             toml = { "taplo" },
