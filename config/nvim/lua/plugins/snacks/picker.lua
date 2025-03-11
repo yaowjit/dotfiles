@@ -18,6 +18,7 @@ return {
             { "<leader>ff", function() Snacks.picker.files() end, desc = "files" },
             { "<leader>fb", function() Snacks.picker.buffers() end, desc = "buffers" },
             { "<leader>fl", function() Snacks.picker.grep_buffers() end, desc = "grep buffers" },
+            { "<C-f>",      function() Snacks.picker.lines() end, desc = "current buffer lines" },
             { "<leader>fL", function() Snacks.picker.grep() end, desc = "grep" },
             { "<leader>fj", function() Snacks.picker.jumps() end, desc = "jumps" },
             { "<leader>fh", function() Snacks.picker.help() end, desc = "help" },
