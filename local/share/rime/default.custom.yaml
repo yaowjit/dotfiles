@@ -1,0 +1,17 @@
+patch:
+  schema_list:
+    - schema: rime_ice # 雾凇拼音（全拼）
+    - schema: double_pinyin_flypy # 小鹤双拼
+
+  key_binder:
+    bindings:
+      # 翻页 , .
+      - { when: paging, accept: comma, send: Page_Up }
+      - { when: has_menu, accept: period, send: Page_Down }
+
+      # ; ' 选2/3词
+      - { accept: semicolon, send: 2, when: has_menu }
+      - { accept: apostrophe, send: 3, when: has_menu }
+
+      - { when: composing, accept: Control+p, send: Up }
+      - { when: composing, accept: Control+n, send: Down }
