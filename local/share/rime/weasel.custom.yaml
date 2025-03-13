@@ -1,0 +1,7 @@
+patch:
+  style:
+    horizontal: false
+    layout:
+      candidate_spacing: 0
+      round_corner: 5
+    color_schema: aqua
