@@ -26,7 +26,7 @@ return {
                 },
                 logLevel = "Information",
                 -- stubPath = "typings",
-                typeCheckingMode = "recommended",
+                typeCheckingMode = "basic", ---@type 'off'|'basic'|'standard'|'strict'|'recommended'|'all'
                 typeshedPaths = {},
                 useLibraryCodeForTypes = true,
             },
