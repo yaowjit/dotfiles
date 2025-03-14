@@ -23,7 +23,8 @@ hide_when_typing = false
 [scrolling]
 history = 10000
 
-[shell]
+[terminal]
+[terminal.shell]
 # program = "/bin/fish"
 program = "/bin/zsh"
 args = ["--login"]
