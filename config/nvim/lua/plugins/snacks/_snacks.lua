@@ -1,3 +1,11 @@
+_G.inspect = function(...)
+    Snacks.debug.inspect(...)
+end
+vim.print = _G.inspect
+_G.log = function(...)
+    Snacks.debug.log(...)
+end
+
 ---@type LazySpec
 return {
     "folke/snacks.nvim",
