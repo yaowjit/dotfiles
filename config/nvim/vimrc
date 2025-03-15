@@ -140,8 +140,6 @@ let maplocalleader = "\<Space>"
 
 " C-r用作搜索替换
 nnoremap U <C-r>
-nnoremap <C-z> u
-vnoremap <C-z> u
 
 " nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
 " nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
@@ -149,8 +147,8 @@ vnoremap <C-z> u
 " vnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
 nnoremap j gj
 nnoremap k gk
-vnoremap j gj
-vnoremap k gk
+xnoremap j gj
+xnoremap k gk
 
 " mini.move
 " nnoremap <M-j> :m +1<CR>==
