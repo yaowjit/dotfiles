@@ -4,4 +4,4 @@ patch:
     layout:
       candidate_spacing: 0
       round_corner: 5
-    color_schema: aqua
+    # color_schema: aqua
