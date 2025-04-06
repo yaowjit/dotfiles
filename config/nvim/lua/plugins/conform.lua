@@ -36,7 +36,7 @@ return {
             json = { "prettierd", "jq", stop_after_first = true },
             toml = { "taplo" },
             -- prettierd
-            markdown = { "mdformat", "prettierd", stop_after_first=true },
+            markdown = { "mdformat", "prettierd", stop_after_first = true },
             yaml = { "prettierd" },
             javascript = { "prettierd" },
             typescript = { "prettierd" },
