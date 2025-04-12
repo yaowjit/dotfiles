@@ -194,7 +194,6 @@ nnoremap <leader>Q <cmd>copen<CR>
 " cut and paste
 nnoremap x "_x
 nnoremap X "_X
-snoremap p i<BS>p
 xnoremap p P
 xnoremap P p
 inoremap <C-v> <C-o>p
