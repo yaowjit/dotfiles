@@ -9,6 +9,9 @@ end
 ---@type LazySpec
 return {
     "folke/snacks.nvim",
+    dependencies = {
+        "nvim-tree/nvim-web-devicons",
+    },
     version = "*",
     priority = 999, -- after than colorscheme plugin
     lazy = false,
