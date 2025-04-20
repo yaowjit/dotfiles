@@ -1,7 +1,7 @@
 ---@type LazySpec
 return {
     "Saghen/blink.cmp",
-    version = "v0.*",
+    version = "*",
     dependencies = {
         "L3MON4D3/LuaSnip",
     },
@@ -10,10 +10,21 @@ return {
         keymap = {
             preset = "enter",
             ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+            ["<C-k>"] = { "show_signature", "hide_signature", "fallback" },
             ["<C-e>"] = { "hide", "fallback" },
             ["<CR>"] = { "accept", "fallback" },
             --
-            ["<Tab>"] = { "snippet_forward", "fallback" },
+            ["<Tab>"] = {
+                function(cmp)
+                    if cmp.snippet_active() then
+                        return cmp.accept()
+                    else
+                        return cmp.select_and_accept()
+                    end
+                end,
+                "snippet_forward",
+                "fallback",
+            },
             ["<S-Tab>"] = { "snippet_backward", "fallback" },
             --
             ["<C-p>"] = { "select_prev", "fallback" },
