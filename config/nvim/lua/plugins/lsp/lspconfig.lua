@@ -18,17 +18,12 @@ return {
     },
     config = function()
         local servers = require("plugins.lsp.config.servers")
-        local lspconfig = require("lspconfig")
-        local cmp_capabilities = require("blink.cmp").get_lsp_capabilities()
+        vim.lsp.config("*", {
+            capabilities = require("blink-cmp").get_lsp_capabilities(),
+        })
         for server, config in pairs(servers) do
-            -- capabilities
-            if config.capabilities ~= nil then
-                config.capabilities = vim.tbl_deep_extend("force", config.capabilities, cmp_capabilities)
-            else
-                config.capabilities = cmp_capabilities
-            end
-
-            lspconfig[server].setup(config)
+            vim.lsp.config(server, config)
+            vim.lsp.enable(server)
         end
     end,
 }
