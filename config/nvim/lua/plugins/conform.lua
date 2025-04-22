@@ -16,17 +16,14 @@ return {
     opts = {
         ---@type table<string, conform.FormatterConfigOverride|fun(bufnr:integer):nil|conform.FormatterConfigOverride>
         formatters = { --{{{
-            ruff_isort = {
-                command = vim.fn.exepath("ruff"),
-                args = { "check", "--select", "I", "--fix", "--stdin-filename", "$FILENAME" },
-            },
         }, --}}}
         ---@type table<string, conform.FiletypeFormatter>
         formatters_by_ft = { --{{{
             ["_"] = { "trim_whitespace", "trim_newlines" },
-            python = { "ruff_isort", "ruff_format" },
+            python = { "ruff_organize_imports", "ruff_format" },
             c = { "clang_format" },
             cpp = { "clang_format" },
+            cmake = { lsp_format = "fallback" },
             lua = { "stylua" },
             rust = { "rustfmt" },
             sh = { "shfmt" },
