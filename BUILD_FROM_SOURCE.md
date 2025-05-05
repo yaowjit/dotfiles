@@ -1,9 +1,8 @@
 # [neovim](https://github.com/neovim/neovim)
 
 ```bash
-git clone https://github.com/neovim/neovim.git
+git clone -b stable --depth=1 https://github.com/neovim/neovim.git
 cd neovim/
-git checkout stable
 make CMAKE_BUILD_TYPE=Release CMAKE_INSTALL_PREFIX="$HOME/.local/"
 make install
 ```
