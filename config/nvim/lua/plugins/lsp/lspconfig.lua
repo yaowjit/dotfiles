@@ -1,3 +1,10 @@
+local servers = {}
+
+for fname, t in vim.fs.dir("~/.config/nvim/lsp/") do
+    local server_name = fname:match("(.*)%.lua$")
+    servers[server_name] = require("lsp." .. server_name)
+end
+
 ---@type LazySpec
 return {
     "neovim/nvim-lspconfig",
@@ -17,7 +24,6 @@ return {
         -- stylua: ignore end
     },
     config = function()
-        local servers = require("plugins.lsp.config.servers")
         vim.lsp.config("*", {
             capabilities = require("blink-cmp").get_lsp_capabilities(),
         })

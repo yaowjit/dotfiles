@@ -1,3 +1,4 @@
+---@type vim.lsp.Config
 return {
     cmd = {
         "clangd",
@@ -18,10 +19,6 @@ return {
     capabilities = {
         offsetEncoding = { "utf-16" },
     },
-    -- on_attach = function(client, bufnr)
-    --     -- require("clangd_extensions.inlay_hints").setup_autocmd()
-    --     -- require("clangd_extensions.inlay_hints").set_inlay_hints()
-    -- end,
     init_options = {
         compilationDatabasePath = OPT("clangd_db_path", ".vscode"),
         fallbackFlags = {
@@ -32,29 +29,29 @@ return {
         clangdFileStatus = true,
     },
     settings = {
-        clangd = {
-            -- compilationDatabaseChanges = {},
-            checkUpdates = false,
-            detectExtensionConflicts = true,
-            enable = true,
-            enableCodeCompletion = true,
-            enableHover = true,
-            inactiveRegions = {
-                opacity = 0.55,
-                useBackgroundHighlight = false,
-            },
-            onConfigChanged = "prompt",
-            path = "clangd",
-            restartAfterCrash = true,
-            semanticHighlighting = true,
-            serverCompletionRanking = true,
-            -- trace
-            InlayHints = {
-                Enabled = true,
-                Designators = true,
-                ParameterNames = true,
-                DeducedTypes = true,
-            },
-        },
+        -- clangd = {
+        --     -- compilationDatabaseChanges = {},
+        --     checkUpdates = false,
+        --     detectExtensionConflicts = true,
+        --     enable = true,
+        --     enableCodeCompletion = true,
+        --     enableHover = true,
+        --     inactiveRegions = {
+        --         opacity = 0.55,
+        --         useBackgroundHighlight = false,
+        --     },
+        --     onConfigChanged = "prompt",
+        --     path = "clangd",
+        --     restartAfterCrash = true,
+        --     semanticHighlighting = true,
+        --     serverCompletionRanking = true,
+        --     -- trace
+        --     InlayHints = {
+        --         Enabled = true,
+        --         Designators = true,
+        --         ParameterNames = true,
+        --         DeducedTypes = true,
+        --     },
+        -- },
     },
 }
