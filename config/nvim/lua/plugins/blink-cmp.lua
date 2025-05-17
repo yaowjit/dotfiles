@@ -14,17 +14,7 @@ return {
             ["<C-e>"] = { "hide", "fallback" },
             ["<CR>"] = { "accept", "fallback" },
             --
-            ["<Tab>"] = {
-                function(cmp)
-                    if cmp.snippet_active() then
-                        return cmp.accept()
-                    else
-                        return cmp.select_and_accept()
-                    end
-                end,
-                "snippet_forward",
-                "fallback",
-            },
+            ["<Tab>"] = { "snippet_forward", "fallback" },
             ["<S-Tab>"] = { "snippet_backward", "fallback" },
             --
             ["<C-p>"] = { "select_prev", "fallback" },
@@ -58,14 +48,33 @@ return {
             providers = {
                 lsp = {
                     score_offset = 3,
+                    fallbacks = {}, -- defaults to `{ 'buffer' }`
                 },
                 buffer = {
+                    opts = {
+                        get_bufnrs = function()
+                            return vim.tbl_filter(function(bufnr)
+                                return vim.bo[bufnr].buftype == ""
+                            end, vim.api.nvim_list_bufs())
+                        end,
+                    },
                     async = false,
                     min_keyword_length = 1,
                 },
             },
         },
+        fuzzy = {
+            implementation = "prefer_rust_with_warning",
+            sorts = {
+                "score",
+                "label",
+                "sort_text",
+            },
+        },
         completion = {
+            trigger = {
+                show_in_snippet = false,
+            },
             accept = {
                 auto_brackets = {
                     enabled = true,
