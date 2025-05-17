@@ -16,35 +16,46 @@ function _G.qftf(info)
     else
         items = fn.getloclist(info.winid, { id = info.id, items = 0 }).items
     end
-    local shorten_path = true
-    local limit = 41
-    local fnameFmt1, fnameFmt2 = "%-" .. limit .. "s", "…%." .. (limit - 1) .. "s"
-    local validFmt = "%s │%4d:%-3d│%s %s"
+    local limit = 40
+    local validFmt = "%s|%4d:%-3d|%s"
+    local cwd = vim.uv.cwd()
+
     for i = info.start_idx, info.end_idx do
         local e = items[i]
         local fname = ""
-        local str
+        local str, text, level
         if e.valid == 1 then
+            text = e.text:gsub("^[%s]*", "")
             if e.bufnr > 0 then
                 fname = fn.bufname(e.bufnr)
                 if fname == "" then
                     fname = "[No Name]"
                 else
+                    fname = fname:gsub("^" .. cwd .. "/", "")
                     fname = fname:gsub("^" .. vim.env.HOME, "~")
                 end
-                -- char in fname may occur more than 1 width, ignore this issue in order to keep performance
-                if #fname <= limit then
-                    fname = fnameFmt1:format(fname)
+
+                if #fname > limit + 1 then
+                    fname = fname:sub(1, limit)
                 else
-                    fname = fnameFmt2:format(fname:sub(1 - limit))
+                    fname = ("%-" .. limit .. "s"):format(fname)
                 end
             end
-            local lnum = e.lnum > 9999 and -1 or e.lnum
-            local col = e.col > 999 and -1 or e.col
-            local qtype = e.type == "" and "" or " " .. e.type:sub(1, 1):upper()
-            str = validFmt:format(fname, lnum, col, qtype, e.text)
+
+            local lnum = e.lnum
+            local col = e.col
+            -- local qtype = e.type == "" and "" or " " .. e.type:sub(1, 1):upper()
+
+            text = text
+                :gsub("^(error)", "ERROR") --
+                :gsub("^(warning)", "WARN")
+                :gsub("^(info)", "INFO")
+                :gsub("^(note)", "NOTE")
+
+            str = validFmt:format(fname, lnum, col, text)
         else
-            str = e.text
+            fname = ("%-" .. limit .. "s"):format("")
+            str = validFmt:format(fname, 0, 0, e.text)
         end
         table.insert(ret, str)
     end
