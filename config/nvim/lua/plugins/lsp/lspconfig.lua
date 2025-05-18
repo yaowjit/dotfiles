@@ -1,8 +1,8 @@
 local servers = {}
 
-for fname, t in vim.fs.dir("~/.config/nvim/lsp/") do
+for fname, t in vim.fs.dir("~/.config/nvim/lua/plugins/lsp/config/") do
     local server_name = fname:match("(.*)%.lua$")
-    servers[server_name] = require("lsp." .. server_name)
+    servers[server_name] = require("plugins.lsp.config." .. server_name)
 end
 
 ---@type LazySpec
