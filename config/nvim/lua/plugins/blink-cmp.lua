@@ -10,12 +10,12 @@ return {
         keymap = {
             preset = "enter",
             ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
-            ["<C-k>"] = { "show_signature", "hide_signature", "fallback" },
+            -- ["<C-k>"] = { "show_signature", "hide_signature", "fallback" },
             ["<C-e>"] = { "hide", "fallback" },
-            ["<CR>"] = { "accept", "fallback" },
+            ["<CR>"] = { "accept_and_enter", "fallback" },
             --
-            ["<Tab>"] = { "snippet_forward", "fallback" },
-            ["<S-Tab>"] = { "snippet_backward", "fallback" },
+            ["<C-j>"] = { "snippet_forward", "fallback" },
+            ["<C-k>"] = { "snippet_backward", "fallback" },
             --
             ["<C-p>"] = { "select_prev", "fallback" },
             ["<C-n>"] = { "select_next", "fallback" },
