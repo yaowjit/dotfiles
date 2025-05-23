@@ -1,3 +1,5 @@
+---@see http://www.lazyvim.org/extras/lang/clangd
+---@see https://clangd.llvm.org/config
 ---@type vim.lsp.Config
 return {
     cmd = {

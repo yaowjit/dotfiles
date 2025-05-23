@@ -1,3 +1,4 @@
+---@see https://github.com/neocmakelsp/neocmakelsp
 ---@type vim.lsp.Config
 return {
     init_options = {

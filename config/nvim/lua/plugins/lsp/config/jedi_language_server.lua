@@ -1,4 +1,4 @@
----@source https://github.com/pappasam/jedi-language-server
+---@see https://github.com/pappasam/jedi-language-server
 ---@type vim.lsp.Config
 return {
     init_options = {

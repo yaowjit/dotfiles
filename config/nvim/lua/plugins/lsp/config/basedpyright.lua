@@ -1,4 +1,4 @@
----@source https://docs.basedpyright.com/latest/configuration/language-server-settings
+---@see https://docs.basedpyright.com/latest/configuration/language-server-settings
 ---@type vim.lsp.Config
 return {
     settings = {

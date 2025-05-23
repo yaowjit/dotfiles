@@ -1,3 +1,4 @@
+---@see https://github.com/astral-sh/ruff-lsp
 ---@type vim.lsp.Config
 return {
     init_options = {
