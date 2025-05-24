@@ -74,12 +74,10 @@ local opts = {
 ---@type LazySpec
 return {
     "nvim-treesitter/nvim-treesitter",
-    -- version = "*",
-    -- event = { "VeryLazy" },
-    event = { "BufRead", "BufNewFile" },
+    branch = "master",
+    lazy = false,
     dependencies = {
         "nvim-treesitter/nvim-treesitter-textobjects",
-        -- "ray-x/cmp-treesitter",
     },
     build = ":TSUpdate",
     config = function()
