@@ -12,7 +12,7 @@ return {
             ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
             -- ["<C-k>"] = { "show_signature", "hide_signature", "fallback" },
             ["<C-e>"] = { "hide", "fallback" },
-            ["<CR>"] = { "accept_and_enter", "fallback" },
+            ["<CR>"] = { "select_and_accept", "fallback" },
             --
             ["<C-j>"] = { "snippet_forward", "fallback" },
             ["<C-k>"] = { "snippet_backward", "fallback" },
@@ -43,7 +43,7 @@ return {
             end,
         },
         sources = {
-            default = { "lsp", "path", "snippets", "buffer" },
+            default = { "lsp", "path", "snippets", "buffer", "omni" },
             min_keyword_length = 0,
             providers = {
                 lsp = {
@@ -51,13 +51,7 @@ return {
                     fallbacks = {}, -- defaults to `{ 'buffer' }`
                 },
                 buffer = {
-                    opts = {
-                        get_bufnrs = function()
-                            return vim.tbl_filter(function(bufnr)
-                                return vim.bo[bufnr].buftype == ""
-                            end, vim.api.nvim_list_bufs())
-                        end,
-                    },
+                    -- opts = {}, default to all visible buffers
                     async = false,
                     min_keyword_length = 1,
                 },
