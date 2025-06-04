@@ -1,8 +1,8 @@
 local servers = {}
 
-for fname, t in vim.fs.dir("~/.config/nvim/lua/plugins/lsp/config/") do
+for fname, t in vim.fs.dir("~/.config/nvim/after/lsp/") do
     local server_name = fname:match("(.*)%.lua$")
-    servers[server_name] = require("plugins.lsp.config." .. server_name)
+    table.insert(servers, server_name)
 end
 
 ---@type LazySpec
@@ -27,9 +27,9 @@ return {
         vim.lsp.config("*", {
             capabilities = require("blink-cmp").get_lsp_capabilities(),
         })
-        for server, config in pairs(servers) do
-            vim.lsp.config(server, config)
-            vim.lsp.enable(server)
+        for _, server_name in ipairs(servers) do
+            vim.lsp.config(server_name, {})
+            vim.lsp.enable(server_name)
         end
     end,
 }
