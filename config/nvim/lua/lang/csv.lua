@@ -1,3 +1,8 @@
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "csv",
+    command = "CsvViewEnable",
+})
+
 ---@type LazySpec
 return {
     "hat0uma/csvview.nvim",
