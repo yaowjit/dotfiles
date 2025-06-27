@@ -16,6 +16,10 @@ return {
     opts = {
         ---@type table<string, conform.FormatterConfigOverride|fun(bufnr:integer):nil|conform.FormatterConfigOverride>
         formatters = { --{{{
+            clang_format = {
+                inherit = true,
+                append_args = { "--fallback-style=Google" },
+            },
         }, --}}}
         ---@type table<string, conform.FiletypeFormatter>
         formatters_by_ft = { --{{{

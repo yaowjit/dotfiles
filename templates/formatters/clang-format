@@ -1,5 +1,5 @@
 # vim:ft=yaml
-BasedOnStyle: LLVM
+BasedOnStyle: Google
 IndentWidth: 4
 ColumnLimit: 120
 AccessModifierOffset: -4 # 访问修饰符(如public)不缩进
