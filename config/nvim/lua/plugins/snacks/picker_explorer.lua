@@ -9,7 +9,27 @@ return {
             win = {
                 list = {
                     keys = {
-                        --
+                        ["o"] = "confirm",
+                        ["O"] = "explorer_open", -- open with system application
+
+                        -- fs
+                        ["a"] = "explorer_add",
+                        ["c"] = "explorer_copy",
+                        ["x"] = "explorer_move",
+                        ["v"] = "explorer_paste",
+                        ["d"] = "explorer_del",
+                        ["r"] = "explorer_rename",
+                        ["y"] = { "explorer_yank", mode = { "n", "x" } },
+
+                        -- change node
+                        ["H"] = "explorer_up",
+                        ["[g"] = "explorer_git_prev",
+                        ["]g"] = "explorer_git_next",
+
+                        -- view
+                        ["."] = "toggle_hidden",
+                        ["I"] = "toggle_ignored",
+                        ["P"] = "toggle_preview",
                     },
                 },
             },

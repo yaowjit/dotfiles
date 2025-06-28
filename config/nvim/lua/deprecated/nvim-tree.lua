@@ -130,7 +130,7 @@ function opts.on_attach(bufnr)
     keymap("]g", api.node.navigate.git.next, "next git item")
 
     -- view
-    keymap("i", api.tree.toggle_gitignore_filter, "toggle git ignore")
+    keymap("I", api.tree.toggle_gitignore_filter, "toggle git ignore")
     keymap(".", api.tree.toggle_hidden_filter, "toggle dotfiles")
     keymap("f", api.live_filter.start, "filter")
     keymap("F", api.live_filter.clear, "clean filter")
@@ -144,9 +144,11 @@ end
 return {
     "nvim-tree/nvim-tree.lua",
     version = "*",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     keys = {
         { "<leader>e", "<cmd>NvimTreeToggle<CR>", desc = "toggle nvim-tree" },
     },
+    command = { "NvimTreeToggle" },
     config = function()
         require("nvim-tree").setup(opts)
 
@@ -161,7 +163,4 @@ return {
             api.tree.reload()
         end)
     end,
-    dependencies = {
-        "nvim-tree/nvim-web-devicons",
-    },
 }
