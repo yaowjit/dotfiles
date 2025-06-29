@@ -117,10 +117,10 @@ function opts.on_attach(bufnr)
     keymap("D", api.fs.remove, "remove")
     keymap("r", api.fs.rename, "rename")
     keymap("y", api.fs.copy.filename, "copy filename")
-    keymap("Y", api.fs.copy.relative_path, "copy relative path")
-    keymap("gy", api.fs.copy.absolute_path, "copy absolute path")
+    keymap("Y", api.fs.copy.absolute_path, "copy absolute path")
+    keymap("gy", api.fs.copy.relative_path, "copy relative path")
 
-    -- change node
+    -- navigate
     keymap("H", api.tree.change_root_to_parent, "cd up")
     keymap("L", api.tree.change_root_to_node, "cd")
     keymap("h", api.node.navigate.parent, "parent node")
@@ -128,6 +128,8 @@ function opts.on_attach(bufnr)
     keymap("K", api.node.show_info_popup, "info")
     keymap("[g", api.node.navigate.git.prev, "prev git item")
     keymap("]g", api.node.navigate.git.next, "next git item")
+    keymap("[d", api.node.navigate.diagnostics.prev, "prev diagnostics item")
+    keymap("]d", api.node.navigate.diagnostics.next, "next diagnostics item")
 
     -- view
     keymap("I", api.tree.toggle_gitignore_filter, "toggle git ignore")
@@ -138,6 +140,9 @@ function opts.on_attach(bufnr)
     keymap("b", api.tree.toggle_no_buffer_filter, "toggle no buffer")
     keymap({ "q", "<Esc>" }, api.tree.close, "quit")
     keymap("g?", api.tree.toggle_help, "help")
+
+    -- search with Snacks.picker
+    keymap("<C-f>", api.tree.find_file, "find files")
 end
 
 ---@type LazySpec

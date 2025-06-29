@@ -47,7 +47,7 @@ return {
     keys = function(_, keys)
         vim.list_extend(keys, {
             -- stylua: ignore start
-            { "<leader>e", function() Snacks.picker.explorer() end, desc = "Snacks explorer" },
+            { "<leader>E", function() Snacks.picker.explorer() end, desc = "Snacks explorer" },
             -- stylua: ignore end
         })
         return keys
