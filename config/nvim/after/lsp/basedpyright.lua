@@ -7,6 +7,7 @@ return {
                 logLevel = "Information", ---@type 'Trace'|'Information'|'Warning'|'Error'
                 diagnosticMode = "openFilesOnly", ---@type 'openFilesOnly'|'workspace'
                 typeCheckingMode = "basic", ---@type 'off'|'basic'|'standard'|'strict'|'recommended'|'all'
+                autoImportCompletions = false,
                 inlayHints = {
                     callArgumentNames = true,
                     functionReturnTypes = true,

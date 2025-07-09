@@ -8,8 +8,8 @@ return {
         return vim.g.enable_endhints
     end,
     opts = {}, -- required, even if empty
-    config = function()
-        require("lsp-endhints").setup({})
+    config = function(_, opts)
+        require("lsp-endhints").setup(opts)
         vim.api.nvim_create_user_command("LspEnableHints", require("lsp-endhints").enable, {})
         vim.api.nvim_create_user_command("LspDisableHints", require("lsp-endhints").disable, {})
         vim.api.nvim_create_user_command("LspToggleHints", require("lsp-endhints").toggle, {})

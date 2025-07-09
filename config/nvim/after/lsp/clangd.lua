@@ -4,6 +4,7 @@
 return {
     cmd = {
         "clangd",
+        "--malloc-trim",
         "--enable-config", -- load .clangd or ~/.config/clangd/config.yaml
         "-j=" .. OPT("clangd_jobs", 8),
         "--background-index",
@@ -23,37 +24,16 @@ return {
     },
     init_options = {
         compilationDatabasePath = OPT("clangd_db_path", ".vscode"),
-        fallbackFlags = {
-            "-std=c++17",
-        },
         usePlaceholders = true,
         completeUnimported = true,
         clangdFileStatus = true,
     },
     settings = {
-        -- clangd = {
-        --     -- compilationDatabaseChanges = {},
-        --     checkUpdates = false,
-        --     detectExtensionConflicts = true,
-        --     enable = true,
-        --     enableCodeCompletion = true,
-        --     enableHover = true,
-        --     inactiveRegions = {
-        --         opacity = 0.55,
-        --         useBackgroundHighlight = false,
-        --     },
-        --     onConfigChanged = "prompt",
-        --     path = "clangd",
-        --     restartAfterCrash = true,
-        --     semanticHighlighting = true,
-        --     serverCompletionRanking = true,
-        --     -- trace
-        --     InlayHints = {
-        --         Enabled = true,
-        --         Designators = true,
-        --         ParameterNames = true,
-        --         DeducedTypes = true,
-        --     },
-        -- },
+        clangd = {
+            restartAfterCrash = true,
+            onConfigChanged = "restart",
+            serverCompletionRanking = true,
+            semanticHighlighting = true,
+        },
     },
 }
