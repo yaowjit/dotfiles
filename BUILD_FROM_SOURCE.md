@@ -41,7 +41,7 @@ deps:
 - gnu make
 
 ```bash
-version=19.1.5
+version=20.1.8
 wget https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-${version}.tar.gz
 tar -xvf llvmorg-${version}.tar.gz
 cd llvm-project-llvmorg-${version}/
