@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source /etc/profile
+
 # if has command
 executable() {
     local cmd=$1
@@ -15,6 +17,8 @@ executable() {
 # if $(executable "git"); then
 #     echo 'has git'
 # fi
+
+# -------------------------------- Alias ----------------------------------------------------------
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -39,59 +43,22 @@ alias ..="cd ..; l"
 alias ...="cd ../..; l"
 alias ....="cd ../../..; l"
 
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-alias baidu="ping www.baidu.com"
-
-# apt alias
-alias update="sudo apt update"
-alias upgrade="sudo apt upgrade -y"
-alias distupgrade="sudo apt dist-upgrade -y"
-alias upgradable="apt list --upgradable"
-alias autoremove="sudo apt autoremove"
-alias cleanconf="dpkg -l | grep ^rc | awk '{print \$2}' | sudo xargs dpkg -P"
-alias apts="apt search "
-alias apti="sudo apt install "
-alias aptl="apt list "
-alias aptfzf="apt list | fzf "
-
-$(executable "yazi") && alias lf="yazi"
-
 # rsync
 alias rsync="rsync -av --progress "
 alias rsync_mirror="rsync --delete "
-
-alias nv="nvim"
-alias nvim-tiny="nvim -u ~/.config/nvim/vimrc "
-# alias vim="nvim -u ~/.config/nvim/vimrc "
-sync_vim() {
-    local server=$1
-    rsync ~/.vimrc $server:~/.vimrc
-}
-sync_nvim() {
-    local server=$1
-    rsync ~/.vimrc $server:~/.vimrc
-    rsync_mirror --exclude test/ ~/.config/nvim/ $server:~/.config/nvim/
-    rsync_mirror --exclude .git/ ~/.local/share/nvim/lazy/ $server:~/.local/share/nvim/lazy/
-}
 
 alias cls="clear"
 [[ -f /usr/bin/batcat ]] && alias cat="batcat"
 alias cda="conda activate "
 alias cdd="conda deactivate "
 alias dea="deactivate"
-alias autoenv="touch .autoenv.zsh .autoenv_leave.zsh \
-&& chmod +x .autoenv.zsh .autoenv_leave.zsh"
-alias rmautoenv='trash .autoenv.zsh .autoenv_leave.zsh'
+
 alias cp="cp -r "
 alias rm="rm -i "                            # 使用rm 删除的时候，会有一个确认的提示。
 [[ -f /usr/bin/trash ]] && alias rm="trash " # 如果有trash, 用trash覆盖
 alias psg="ps -A | grep "
 
 # git
-alias dst="yadm status "
 alias gst="git status "
 alias ga="git add "
 alias gc1="git clone --depth=1 "
@@ -102,19 +69,52 @@ gpull() {
     git pull --autostash --rebase origin $current_branch:$current_branch
 }
 
-# dd
-alias dd="dd status=progress "
-ddgz_w() {
-    local file=$1
-    local device=$2
-    gzip -dc "$file" | sudo dd of="$device" bs=128K
-}
-ddgz_r() {
-    local device=$1
-    local file=$2
-    sudo dd if="$device" | gzip >"$file"
-}
-
 # ssh
 alias ssh-keygen="ssh-keygen -t ed25519 " # ed25519 不需要指定长度
 alias ssh-keygen-rsa="ssh-keygen -t rsa -b 4096 "
+
+# -------------------------------- Env ------------------------------------------------------------
+# .env file example
+# ENV1=value1
+# ENV2=value2
+loadenv() {
+    local envfile=".env"
+    [[ $1 ]] && envfile=$1
+    if [[ -f $envfile ]]; then
+        set -a
+        source $envfile
+        set +a
+    else
+        echo "no env file founnd"
+    fi
+}
+
+add_to_path() {
+    local p=$1
+    if [[ ! $p ]]; then
+        return
+    fi
+
+    if [[ ! -d $p ]]; then
+        return
+    fi
+
+    if [[ ! "$PATH" == *"$p"* ]]; then
+        export PATH="$p:$PATH"
+    fi
+}
+add_to_path "$HOME/.local/bin"
+add_to_path "$HOME/.cargo/bin"
+add_to_path "$HOME/bin"
+[ -f "$HOME/anaconda3/etc/profile.d/conda.sh" ] && source "$HOME/anaconda3/etc/profile.d/conda.sh"
+[ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ] && source "$HOME/miniconda3/etc/profile.d/conda.sh"
+# 去除重复内容, 且不排序
+export PATH=$(echo $PATH | sed "s/:/\n/g" | uniq | tr -s "\n" ":" | sed "s/:$//g")
+
+function proxyenv() {
+    echo "HTTP_PROXY=$HTTP_PROXY"
+    echo "HTTPS_PROXY=$HTTPS_PROXY"
+    echo "http_proxy=$http_proxy"
+    echo "https_proxy=$https_proxy"
+    echo "all_proxy=$all_proxy"
+}

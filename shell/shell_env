@@ -1,5 +1,14 @@
 #!/bin/bash
 
+executable() {
+    local cmd=$1
+    if command -v $cmd >/dev/null 2>&1; then
+        return $(true)
+    else
+        return $(false)
+    fi
+}
+
 # .env file example
 # ENV1=value1
 # ENV2=value2
@@ -21,6 +30,10 @@ add_to_path() {
         return
     fi
 
+    if [[ ! -d $p ]]; then
+        return
+    fi
+
     if [[ ! "$PATH" == *"$p"* ]]; then
         export PATH="$p:$PATH"
     fi
@@ -29,6 +42,7 @@ add_to_path() {
 add_to_path "$HOME/.local/bin"
 add_to_path "$HOME/.cargo/bin"
 [ -f "$HOME/anaconda3/etc/profile.d/conda.sh" ] && source "$HOME/anaconda3/etc/profile.d/conda.sh"
+[ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ] && source "$HOME/miniconda3/etc/profile.d/conda.sh"
 add_to_path "/opt/TinyTeX/bin/x86_64-linux"
 add_to_path "$HOME/.local/share/nvim/mason/bin"
 # need to config npm
@@ -132,6 +146,8 @@ function unproxy() {
     echo "unset all_proxy"
 }
 function proxyenv() {
+    echo "HTTP_PROXY=$HTTP_PROXY"
+    echo "HTTPS_PROXY=$HTTPS_PROXY"
     echo "http_proxy=$http_proxy"
     echo "https_proxy=$https_proxy"
     echo "all_proxy=$all_proxy"
