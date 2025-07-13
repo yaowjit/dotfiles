@@ -24,6 +24,20 @@ return {
             end,
             desc = "goto definition",
         },
+        {
+            "gi",
+            function()
+                vim.lsp.buf.implementation({ reuse_win = true })
+            end,
+            desc = "goto implementation",
+        },
+        {
+            "gt",
+            function()
+                vim.lsp.buf.type_definition({ reuse_win = true })
+            end,
+            desc = "goto type definition",
+        },
         { "gh", "<cmd>Trouble lsp<CR>", desc = "preview definition/references/..." },
         { "K", vim.lsp.buf.hover, desc = "show document" },
 
