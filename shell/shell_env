@@ -49,15 +49,6 @@ add_to_path "$HOME/.local/share/nvim/mason/bin"
 # mkdir -p ~/.local/share/npm-global
 # npm config set prefix '~/.local/share/npm-global'
 add_to_path "$HOME/.local/share/npm-global/bin"
-if [[ -d /opt/java/jdk-11 ]]; then
-    JAVA_HOME=/opt/java/jdk-11
-    JRE_HOME=/opt/java/jdk-11/jre
-    CLASS_PATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JRE_HOME/lib
-
-    add_to_path "$JAVA_HOME/bin"
-    add_to_path "$JRE_HOME/bin"
-    export JAVA_HOME JRE_HOME CLASS_PATH
-fi
 
 test -f "$HOME/.xmake/profile" && source "$HOME/.xmake/profile"
 
