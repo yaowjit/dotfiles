@@ -125,6 +125,12 @@ get_server_cli_tools() {
     wget $url -O tmp/gitui.tar.gz
     tar -xf tmp/gitui.tar.gz -C bin/
 
+    get_latest_tag "aristocratos/btop"
+    url=https://github.com/$repo/releases/download/$ver_tag/btop-$arch-linux-musl.tbz
+    wget $url -O tmp/btop.tbz
+    tar -xf tmp/btop.tbz -C tmp/
+    cp tmp/btop/bin/btop bin/
+
     rm -rf tmp/
 }
 
