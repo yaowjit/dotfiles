@@ -13,7 +13,9 @@ set nocompatible
 
 filetype on
 syntax on
-set termguicolors
+if has('nvim')
+    set termguicolors
+endif
 colorscheme slate
 
 set backup
