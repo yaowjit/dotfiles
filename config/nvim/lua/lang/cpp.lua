@@ -11,6 +11,13 @@ vim.g.clangd_extra_flags = {
     "--header-insertion-decorators=true", -- true/false
 }
 
+vim.api.nvim_create_autocmd({ "FileType" }, {
+    pattern = { "cpp", "c" },
+    callback = function(file)
+        vim.keymap.set("n", "<leader>R", "<cmd>ClangdSwitchSourceHeader<CR>", { noremap = true, buffer = file.buf })
+    end,
+})
+
 ---@type LazySpec
 return {
     "p00f/clangd_extensions.nvim",
