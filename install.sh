@@ -24,6 +24,7 @@ tools=(
     lf
     yazi
     trash
+    tree-sitter
 
     # shell
     tmux
@@ -130,6 +131,17 @@ get_server_cli_tools() {
     wget $url -O tmp/btop.tbz
     tar -xf tmp/btop.tbz -C tmp/
     cp tmp/btop/bin/btop bin/
+
+    get_latest_tag "tree-sitter/tree-sitter"
+    echo $ver_tag
+    if [[ $arch == "x86_64" ]]; then
+        url="https://github.com/$repo/releases/download/$ver_tag/tree-sitter-linux-x64.gz"
+    elif [[ $arch == "aarch64" ]]; then
+        url="https://github.com/$repo/releases/download/$ver_tag/tree-sitter-linux-arm64.gz"
+    fi
+    wget $url -O bin/tree-sitter.gz
+    gzip -d bin/tree-sitter.gz
+    chmod +x bin/tree-sitter
 
     rm -rf tmp/
 }
