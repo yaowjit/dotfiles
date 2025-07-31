@@ -74,6 +74,12 @@ return {
         statuscolumn = {
             enabled = true,
         },
+        scope = {
+            enabled = true,
+        },
+        words = {
+            enabled = true,
+        },
     },
     keys = {
         -- stylua: ignore start
