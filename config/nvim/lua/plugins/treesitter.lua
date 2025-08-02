@@ -4,10 +4,13 @@ return {
         "nvim-treesitter/nvim-treesitter",
         branch = "main",
         lazy = false,
-        build = ":TSUpdate",
-        config = function()
-            vim.api.nvim_create_user_command("TSEnsureInstall", function()
-                require("nvim-treesitter").install({
+        enabled = vim.fn.executable("tree-sitter") == 1,
+        build = function()
+            local plugin_path = vim.fn.stdpath("data") .. "/lazy/nvim-treesitter/nvim-treesitter"
+            vim.opt.runtimepath:prepend(plugin_path)
+            -- ensure installed
+            require("nvim-treesitter")
+                .install({
                     "c",
                     "cpp",
                     "python",
@@ -18,22 +21,29 @@ return {
                     "markdown",
                     "markdown_inline",
                 })
-            end, {})
+                :wait(300 * 1000) -- 5 min
 
-            vim.api.nvim_create_autocmd("FileType", {
-                pattern = require("nvim-treesitter").get_installed(),
-                callback = function()
-                    vim.treesitter.start()
-                    vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-                    vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-                end,
-            })
+            require("nvim-treesitter").update()
+        end,
+        config = function()
+            local installed_ts = require("nvim-treesitter").get_installed()
+            if #installed_ts > 0 then
+                vim.api.nvim_create_autocmd("FileType", {
+                    pattern = require("nvim-treesitter").get_installed(),
+                    callback = function()
+                        vim.treesitter.start()
+                        vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+                        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+                    end,
+                })
+            end
         end,
     },
     {
         "nvim-treesitter/nvim-treesitter-textobjects",
         branch = "main",
         lazy = false,
+        enabled = vim.fn.executable("tree-sitter") == 1,
         opts = {},
         config = function(_, opts)
             require("nvim-treesitter-textobjects").setup(opts)
