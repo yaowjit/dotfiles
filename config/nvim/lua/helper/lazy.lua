@@ -49,6 +49,7 @@ M.setup = function(...)
 
     _G.pathlib = require("helper.path")
 
+    vim.keymap.set("n", "<leader>L", ":Lazy<CR>", {})
     require("lazy").setup(opts)
 end
 
