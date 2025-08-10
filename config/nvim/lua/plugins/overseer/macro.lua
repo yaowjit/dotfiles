@@ -49,6 +49,9 @@ local MACROS = {
     VIM_GUI = function()
         return vim.fn.has("gui_running") == 1
     end,
+    VIM_ARCH = function()
+        return vim.uv.os_uname()["machine"]
+    end,
 }
 
 -- M.VIM_VERSION   -- Value of v:version
