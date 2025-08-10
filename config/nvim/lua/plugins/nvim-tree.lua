@@ -167,5 +167,8 @@ return {
         api.events.subscribe(Event.FolderCreated, function(folder)
             api.tree.reload()
         end)
+        api.events.subscribe(Event.TreeOpen, function()
+            api.tree.reload()
+        end)
     end,
 }
