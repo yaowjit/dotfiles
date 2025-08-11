@@ -27,6 +27,7 @@ return {
                     { icon = " ", key = "l", desc = "Find Text",    action = function() Snacks.picker.grep() end },
                     { icon = " ", key = "m", desc = "Recent Files", action = function() Snacks.picker.recent() end,                              },
                     { icon = " ", key = "c", desc = "Config",       action = function() Snacks.picker.files({cwd=vim.fn.stdpath("config")}) end, },
+                    { icon = " ", key = "s", desc = "Session",      action = function() require("persistence").load({ last = true }) end, },
                     { icon = " ", key = "q", desc = "Quit",         action = ":qa" },
                     -- stylua: ignore end
                 },
