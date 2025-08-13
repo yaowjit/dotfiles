@@ -20,7 +20,6 @@ vim.g.clangd_flags = {
 	"--enable-config", -- load .clangd or ~/.config/clangd/config.yaml
 	"--clang-tidy",
 	-- lsp service
-	"--offset-encoding=utf-16", -- utf-8/utf-16/utf-32
 	"--all-scopes-completion=true", -- true/false
 	"--completion-style=detailed", -- detailed/bundled
 	"--header-insertion=iwyu", -- iwyu/never
