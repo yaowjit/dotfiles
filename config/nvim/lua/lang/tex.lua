@@ -115,7 +115,7 @@ end
 return {
     "lervag/vimtex",
     version = "*",
-    enabled = _G.pathlib.executable("pdflatex"),
+    cond = _G.pathlib.executable("pdflatex"),
     ft = "tex",
     config = vimtex_setup,
 }

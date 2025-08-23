@@ -4,7 +4,7 @@ return {
         "nvim-treesitter/nvim-treesitter",
         branch = "main",
         lazy = false,
-        enabled = vim.fn.executable("tree-sitter") == 1,
+        cond = vim.fn.executable("tree-sitter") == 1,
         build = function()
             local plugin_path = vim.fn.stdpath("data") .. "/lazy/nvim-treesitter/nvim-treesitter"
             vim.opt.runtimepath:prepend(plugin_path)
@@ -43,7 +43,8 @@ return {
         "nvim-treesitter/nvim-treesitter-textobjects",
         branch = "main",
         lazy = false,
-        enabled = vim.fn.executable("tree-sitter") == 1,
+        cond = vim.fn.executable("tree-sitter") == 1,
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
         opts = {},
         config = function(_, opts)
             require("nvim-treesitter-textobjects").setup(opts)

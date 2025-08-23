@@ -2,7 +2,6 @@
 return {
     "L3MON4D3/LuaSnip",
     version = "*",
-    enabled = true,
     dependencies = {
         "honza/vim-snippets",
     },

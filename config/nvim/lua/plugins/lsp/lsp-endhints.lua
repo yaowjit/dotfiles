@@ -1,11 +1,9 @@
-vim.g.enable_endhints = true
-
 ---@type LazySpec
 return {
     "chrisgrieser/nvim-lsp-endhints",
     event = "LspAttach",
-    enabled = function()
-        return vim.g.enable_endhints
+    cond = function()
+        return OPT("enable_endhints", true)
     end,
     opts = {}, -- required, even if empty
     config = function(_, opts)

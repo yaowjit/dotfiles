@@ -7,7 +7,7 @@ return {
     },
     version = "*",
     ft = { "lua" },
-    enabled = function()
+    cond = function()
         if vim.g.lazydev_enabled == true then
             return true
         end
