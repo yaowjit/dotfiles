@@ -4,6 +4,10 @@ return {
     version = "*",
     dependencies = {
         "L3MON4D3/LuaSnip",
+        {
+            "Kaiser-Yang/blink-cmp-dictionary",
+            dependencies = { "nvim-lua/plenary.nvim" },
+        },
     },
     opts = {
         keymap = {
@@ -42,7 +46,7 @@ return {
             end,
         },
         sources = {
-            default = { "lsp", "path", "snippets", "buffer", "omni" },
+            default = { "lsp", "path", "snippets", "buffer", "omni", "dictionary" },
             min_keyword_length = 0,
             providers = {
                 lsp = {
@@ -53,6 +57,16 @@ return {
                     -- opts = {}, default to all visible buffers
                     async = false,
                     min_keyword_length = 1,
+                },
+                dictionary = {
+                    module = "blink-cmp-dictionary",
+                    name = "Dict",
+                    max_items = 10,
+                    min_keyword_length = 3,
+                    async = true,
+                    opts = {
+                        dictionary_directories = { vim.fn.expand("~/.config/nvim/dictionary/") },
+                    },
                 },
             },
         },
