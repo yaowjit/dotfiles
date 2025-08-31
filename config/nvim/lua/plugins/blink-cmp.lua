@@ -84,6 +84,7 @@ return {
                     name = "Dict",
                     max_items = 10,
                     min_keyword_length = 3,
+                    score_offset = -3,
                     async = true,
                     opts = {
                         dictionary_directories = { vim.fn.expand("~/.config/nvim/dictionary/") },
