@@ -60,7 +60,10 @@ return {
     },
     config = function()
         vim.lsp.config("*", {
-            capabilities = require("blink-cmp").get_lsp_capabilities(),
+            capabilities = require("blink-cmp").get_lsp_capabilities({
+                -- 有些lsp会忽略 snippetSupport 需要在lsp server中单独设置
+                textDocument = { completion = { completionItem = { snippetSupport = false } } },
+            }),
         })
         for _, server_name in ipairs(servers) do
             vim.lsp.config(server_name, {})

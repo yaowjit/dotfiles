@@ -17,7 +17,17 @@ return {
             ["<C-e>"] = { "hide", "fallback" },
             ["<CR>"] = { "select_and_accept", "fallback" },
             --
-            ["<Tab>"] = { "snippet_forward", "fallback" },
+            ["<Tab>"] = {
+                function(cmp)
+                    if cmp.snippet_active() then
+                        return cmp.accept()
+                    else
+                        return cmp.select_and_accept()
+                    end
+                end,
+                "snippet_forward",
+                "fallback",
+            },
             ["<S-Tab>"] = { "snippet_backward", "fallback" },
             --
             ["<C-p>"] = { "select_prev", "fallback" },
@@ -27,8 +37,19 @@ return {
             -- custom
             ["<C-u>"] = { "scroll_documentation_up", "fallback" },
             ["<C-d>"] = { "scroll_documentation_down", "fallback" },
-            ["<C-f>"] = {},
-            ["<C-b>"] = {},
+            ["<C-f>"] = false,
+            ["<C-b>"] = false,
+        },
+        cmdline = {
+            keymap = {
+                preset = "cmdline",
+                ["<CR>"] = { "accept", "fallback" },
+            },
+            completion = {
+                menu = {
+                    auto_show = true,
+                },
+            },
         },
         snippets = {
             preset = "luasnip",
@@ -81,6 +102,8 @@ return {
         completion = {
             trigger = {
                 show_in_snippet = false,
+                show_on_trigger_character = true,
+                show_on_blocked_trigger_characters = { " ", "\n", "\t" },
             },
             accept = {
                 auto_brackets = {
