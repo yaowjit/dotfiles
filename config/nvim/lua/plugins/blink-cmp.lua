@@ -4,11 +4,11 @@ return {
     version = "*",
     dependencies = {
         "L3MON4D3/LuaSnip",
-        {
-            "Kaiser-Yang/blink-cmp-dictionary",
-            dependencies = { "nvim-lua/plenary.nvim" },
-        },
+        { "Kaiser-Yang/blink-cmp-dictionary", dependencies = { "nvim-lua/plenary.nvim" } },
+        { "mikavilpas/blink-ripgrep.nvim", version = "*" },
     },
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
     opts = {
         keymap = {
             preset = "enter",
@@ -67,7 +67,14 @@ return {
             end,
         },
         sources = {
-            default = { "lsp", "path", "snippets", "buffer", "omni", "dictionary" },
+            default = {
+                "lsp",
+                "path",
+                "snippets",
+                "buffer",
+                "dictionary",
+                "ripgrep",
+            },
             min_keyword_length = 0,
             providers = {
                 lsp = {
@@ -90,21 +97,44 @@ return {
                         dictionary_directories = { vim.fn.expand("~/.config/nvim/dictionary/") },
                     },
                 },
+                ripgrep = {
+                    module = "blink-ripgrep",
+                    name = "Rg",
+                    ---@module "blink-ripgrep"
+                    ---@type blink-ripgrep.Options
+                    opts = {
+                        max_items = 10,
+                        min_keyword_length = 3,
+                        prefix_min_len = 3,
+                        score_offset = -1,
+                        project_root_marker = vim.g.ROOT_MARKERS,
+                        backend = {
+                            use = "gitgrep-or-ripgrep",
+                            ripgrep = {
+                                ignore_paths = { "build/" },
+                            },
+                        },
+                    },
+                },
             },
         },
         fuzzy = {
-            implementation = "prefer_rust_with_warning",
             sorts = {
+                "exact",
                 "score",
-                "label",
                 "sort_text",
             },
         },
         completion = {
             trigger = {
-                show_in_snippet = false,
+                show_in_snippet = true,
                 show_on_trigger_character = true,
-                show_on_blocked_trigger_characters = { " ", "\n", "\t" },
+                show_on_blocked_trigger_characters = function()
+                    if vim.api.nvim_get_mode().mode == "c" then
+                        return {}
+                    end
+                    return { " ", "\n", "\t" }
+                end,
             },
             accept = {
                 auto_brackets = {
