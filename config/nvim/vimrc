@@ -9,7 +9,7 @@ set nocompatible
 ".nvim.lua .nvimrc .exrc
 " set exrc
 " prefer to put project level settings in .lazy.lua
-" load order -> .lazy.lua -> lazy.nvim -> (load plugins) -> .nvim.lua
+" load order -> lazy.nvim -> .lazy.lua -> (load plugins) -> .nvim.lua
 
 filetype on
 syntax on

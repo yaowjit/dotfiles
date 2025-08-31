@@ -35,8 +35,7 @@ local MACROS = {
         return fpath:sub(#cwd + 2)
     end,
     VIM_ROOT = function()
-        local markers = vim.g.ROOT_MARKERS or { ".git", ".hg", ".svn", ".root", ".project", "Makefile" }
-        vim.fs.find(markers, {
+        vim.fs.find(vim.g.ROOT_MARKERS, {
             path = vim.uv.cwd(),
         })
     end,
