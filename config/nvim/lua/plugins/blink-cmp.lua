@@ -7,6 +7,7 @@ return {
         { "Kaiser-Yang/blink-cmp-dictionary", dependencies = { "nvim-lua/plenary.nvim" } },
         { "mikavilpas/blink-ripgrep.nvim", version = "*" },
     },
+    event = { "InsertEnter", "CmdlineEnter" },
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
