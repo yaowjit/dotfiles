@@ -95,7 +95,7 @@ return {
                     score_offset = -3,
                     async = true,
                     opts = {
-                        dictionary_directories = { vim.fn.expand("~/.config/nvim/dictionary/") },
+                        dictionary_directories = { vim.fn.expand("~/.config/nvim/dicts/") },
                     },
                 },
                 ripgrep = {
