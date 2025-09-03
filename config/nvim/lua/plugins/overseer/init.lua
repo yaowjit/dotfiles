@@ -2,6 +2,7 @@
 return {
     "stevearc/overseer.nvim",
     -- version = "*",
+    dependencies = { "ColinKennedy/mega.cmdparse" },
     event = { "VeryLazy" },
     opts = {
         -- strategy = "terminal",
