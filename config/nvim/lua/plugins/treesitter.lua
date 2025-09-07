@@ -6,7 +6,14 @@ return {
         lazy = false,
         cond = vim.fn.executable("tree-sitter") == 1,
         build = function()
-            local plugin_path = vim.fn.stdpath("data") .. "/lazy/nvim-treesitter/nvim-treesitter"
+            require("mason").setup()
+            if not require("mason-registry").is_installed("tree-sitter-cli") then
+                vim.cmd("MasonInstall tree-sitter-cli")
+            else
+                vim.cmd("MasonUpdate")
+            end
+
+            local plugin_path = vim.fn.stdpath("data") .. "/lazy/nvim-treesitter/"
             vim.opt.runtimepath:prepend(plugin_path)
             -- ensure installed
             require("nvim-treesitter")
@@ -20,7 +27,7 @@ return {
                     "vimdoc",
                     "markdown",
                     "markdown_inline",
-                })
+                }, { force = true })
                 :wait(300 * 1000) -- 5 min
 
             require("nvim-treesitter").update()
