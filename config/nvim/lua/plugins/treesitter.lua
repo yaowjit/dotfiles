@@ -27,7 +27,7 @@ return {
                     "vimdoc",
                     "markdown",
                     "markdown_inline",
-                }, { force = true })
+                }, {})
                 :wait(300 * 1000) -- 5 min
 
             require("nvim-treesitter").update()
