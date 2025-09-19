@@ -110,10 +110,11 @@ return {
                         score_offset = -1,
                         project_root_marker = vim.g.ROOT_MARKERS,
                         backend = {
-                            use = "gitgrep-or-ripgrep",
+                            use = "gitgrep",
                             ripgrep = {
                                 ignore_paths = { "build/" },
                             },
+                            gitgrep = {},
                         },
                     },
                 },
