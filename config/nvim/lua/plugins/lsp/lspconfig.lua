@@ -8,7 +8,8 @@ end
 ---@type LazySpec
 return {
     "neovim/nvim-lspconfig",
-    event = { "BufReadPre", "BufNewFile" },
+    -- event = { "BufReadPre", "BufNewFile" },
+    lazy = false, -- enable lsp attach when creating new files
     keys = {
         {
             "<C-LeftMouse>",
