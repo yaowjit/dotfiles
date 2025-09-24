@@ -18,7 +18,7 @@ return {
             pattern = { "python", "c", "cpp" },
             callback = function(event)
                 local opt = { buffer = event.buf }
-                vim.keymap.set("n", "<leader>b", require("persistent-breakpoints.api").toggle_breakpoint, opt)
+                -- vim.keymap.set("n", "<leader>b", require("persistent-breakpoints.api").toggle_breakpoint, opt)
                 vim.keymap.set("n", "<2-LeftMouse>", require("persistent-breakpoints.api").toggle_breakpoint, opt)
                 vim.api.nvim_buf_create_user_command(event.buf, "DapRunToCursor", require("dap").run_to_cursor, {})
             end,
