@@ -2,9 +2,15 @@
 return {
     "ColinKennedy/mega.cmdparse",
     dependencies = { "ColinKennedy/mega.logging" },
-    event = { "VeryLazy" },
-    opts = {},
     config = function(_, otps)
-        vim.g.cmdparse_configuration = {}
+        vim.g.cmdparse_configuration = {
+            cmdparse = {
+                auto_complete = {
+                    display = {
+                        help_flag = false,
+                    },
+                },
+            },
+        }
     end,
 }
