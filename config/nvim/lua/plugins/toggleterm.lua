@@ -25,12 +25,12 @@ return {
             end,
         }
 
-        local lazygit = Terminal:new({ cmd = "lazygit", hidden = false, float_opts = float_opts })
+        local lazygit = Terminal:new({ cmd = "lazygit", hidden = false, direction = "float", float_opts = float_opts })
         create_cmd("LazyGit", function()
             lazygit:toggle()
         end, {})
 
-        local gitui = Terminal:new({ cmd = "gitui", hidden = false, float_opts = float_opts })
+        local gitui = Terminal:new({ cmd = "gitui", hidden = false, direction = "float", float_opts = float_opts })
         create_cmd("GitUI", function()
             if not _G.pathlib.executable("gitui") then
                 vim.cmd([[MasonInstall gitui]])
