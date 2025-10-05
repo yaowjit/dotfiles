@@ -5,10 +5,10 @@ return {
     dependencies = { "ColinKennedy/mega.cmdparse" },
     event = { "VeryLazy" },
     opts = {
-        -- strategy = "terminal",
-        strategy = "toggleterm",
-        template_dirs = { "overseer.template", "plugins.overseer.template" },
-        templates = { "builtin", "asynctask" },
+        strategy = "terminal",
+        -- strategy = "toggleterm",
+        template_dirs = { "overseer.template" },
+        templates = { "builtin" },
         task_list = {
             min_width = { 50, 0.3 },
             bindings = {
