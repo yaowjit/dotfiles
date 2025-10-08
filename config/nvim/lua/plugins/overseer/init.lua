@@ -29,5 +29,6 @@ return {
     },
     keys = {
         { "<C-b>", "<cmd>OverseerRun<CR>", desc = "OverseerRun" },
+        { "<C-t>", "<cmd>OverseerToggle<CR>", desc = "OverseerToggle" },
     },
 }
