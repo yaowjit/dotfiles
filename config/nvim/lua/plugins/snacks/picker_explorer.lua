@@ -33,6 +33,8 @@ return {
                     },
                 },
             },
+            jump = { close = true },
+            layout = { preview = true },
             include = {
                 ".vscode",
             },
