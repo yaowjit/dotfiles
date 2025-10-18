@@ -256,6 +256,8 @@ nnoremap <C-Right> <cmd>vertical resize -2<CR>
 " previous and next buffer
 nnoremap <C-n> <cmd>bnext<CR>
 nnoremap <C-p> <cmd>bprevious<CR>
+nnoremap <Tab> <cmd>bnext<CR>
+nnoremap <S-Tab> <cmd>bprevious<CR>
 
 " emacs mode in insert_mode
 inoremap <C-d>   <Del>
