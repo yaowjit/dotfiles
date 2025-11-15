@@ -26,6 +26,5 @@ return {
         for plug, opt in pairs(opts) do
             require("mini." .. plug).setup(opt)
         end
-        require("mini.icons").get = nil
     end,
 }
