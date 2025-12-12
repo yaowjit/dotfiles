@@ -113,6 +113,14 @@ if [ $WSL_DISTRO_NAME ]; then
     fi
 fi
 
+function proxyenv() {
+    echo "HTTP_PROXY=$HTTP_PROXY"
+    echo "HTTPS_PROXY=$HTTPS_PROXY"
+    echo "http_proxy=$http_proxy"
+    echo "https_proxy=$https_proxy"
+    echo "all_proxy=$all_proxy"
+}
+
 function setproxy() {
     # default
     host_ip="127.0.0.1"
@@ -124,22 +132,19 @@ function setproxy() {
     [[ $WSL_VERSION -eq 2 ]] && host_ip=$WSL_HOST_IP
 
     export http_proxy="http://${host_ip}:${proxy_port}"
-    export https_proxy="http://${host_ip}:${proxy_port}"
+    export https_proxy="${http_proxy}"
     export all_proxy="socks5://${host_ip}:${proxy_port}"
-    echo "set http(s)_proxy=${http_proxy}"
-    echo "set all_proxy=${all_proxy}"
+    unset HTTP_PROXY
+    unset HTTPS_PROXY
+
+    proxyenv
 }
 function unproxy() {
     unset http_proxy
     unset https_proxy
     unset all_proxy
+    unset HTTP_PROXY
+    unset HTTPS_PROXY
     echo "unset http(s)_proxy"
     echo "unset all_proxy"
-}
-function proxyenv() {
-    echo "HTTP_PROXY=$HTTP_PROXY"
-    echo "HTTPS_PROXY=$HTTPS_PROXY"
-    echo "http_proxy=$http_proxy"
-    echo "https_proxy=$https_proxy"
-    echo "all_proxy=$all_proxy"
 }
