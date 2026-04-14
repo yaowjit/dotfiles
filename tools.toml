@@ -1,0 +1,155 @@
+[global]
+arch.aarch64="aarch64"
+arch.x86_64="x86_64"
+url="https://github.com/{repo}/releases/download/{tag}/{fname}"
+bin_path="~/.dotfiles/bin"
+
+[neovim]
+repo="neovim/neovim"
+tag="v0.11.7"
+arch.aarch64="arm64"
+fname="nvim-linux-{arch}.appimage"
+cmd="cp {fname} {bin_path}/{arch_key}/nvim"
+
+[fzf]
+repo="junegunn/fzf"
+tag="v0.71.0"
+version="0.71.0"
+arch.aarch64="arm64"
+arch.x86_64="amd64"
+fname="fzf-{version}-linux_{arch}.tar.gz"
+cmd="tar -xf {fname} -C {bin_path}/{arch_key}"
+
+[fd]
+repo="sharkdp/fd"
+tag="v10.4.2"
+fname="fd-{tag}-{arch}-unknown-linux-musl.tar.gz"
+cmd="tar -xf {fname} --wildcards 'fd-*/fd' --strip-components=1 && mv fd {bin_path}/{arch_key}"
+
+[gitui]
+repo="gitui-org/gitui"
+tag="v0.28.1"
+fname="gitui-linux-{arch}.tar.gz"
+cmd="tar -xf {fname} -C {bin_path}/{arch_key}"
+
+[yazi]
+repo="sxyazi/yazi"
+tag="v26.1.22"
+fname="yazi-{arch}-unknown-linux-musl.zip"
+cmd="unzip -oj {fname} 'yazi-*/yazi' -d {bin_path}/{arch_key}"
+
+[tree-sitter]
+repo="tree-sitter/tree-sitter"
+tag="v0.26.8"
+arch.aarch64="arm64"
+arch.x86_64="x64"
+fname="tree-sitter-cli-linux-{arch}.zip"
+cmd="unzip -oj {fname} -d {bin_path}/{arch_key}"
+
+[tmux]
+repo="mjakob-gh/build-static-tmux"
+tag="v3.6a"
+arch.aarch64="arm64"
+arch.x86_64="amd64"
+fname="tmux.linux-{arch}.gz"
+cmd="gzip -dfk {fname} && mv ./tmux.linux-{arch} -t {bin_path}/{arch_key}"
+
+[fish]
+repo="fish-shell/fish-shell"
+tag="4.6.0"
+fname="fish-{tag}-linux-{arch}.tar.xz"
+cmd="tar -xf {fname} -C {bin_path}/{arch_key}"
+
+[zoxide]
+repo="ajeetdsouza/zoxide"
+tag="v0.9.9"
+version="0.9.9"
+fname="zoxide-{version}-{arch}-unknown-linux-musl.tar.gz"
+cmd="tar -xf {fname} zoxide && mv zoxide {bin_path}/{arch_key}"
+
+[starship]
+repo="starship/starship"
+tag="v1.24.2"
+fname="starship-{arch}-unknown-linux-musl.tar.gz"
+cmd="tar -xf {fname} -C {bin_path}/{arch}"
+
+[neocmakelsp]
+repo="neocmakelsp/neocmakelsp"
+tag="v0.10.2"
+fname="neocmakelsp-{arch}-unknown-linux-musl.tar.gz"
+cmd="tar -xf {fname} -C {bin_path}/{arch}"
+
+[ruff]
+repo="astral-sh/ruff"
+tag="0.15.10"
+fname="ruff-{arch}-unknown-linux-musl.tar.gz"
+cmd="tar -xf {fname} --strip-components=1 && mv ruff {bin_path}/{arch_key}"
+
+[ty]
+repo="astral-sh/ty"
+tag="0.0.29"
+fname="ty-{arch}-unknown-linux-musl.tar.gz"
+cmd="tar -xf {fname} --strip-components=1 && mv ty {bin_path}/{arch_key}"
+
+[uv]
+repo="astral-sh/uv"
+tag="0.11.6"
+fname="uv-{arch}-unknown-linux-musl.tar.gz"
+cmd="tar -xf {fname} --strip-components=1 && mv uv {bin_path}/{arch_key}"
+
+[stylua]
+repo="JohnnyMorganz/StyLua"
+tag="v2.4.1"
+fname="stylua-linux-{arch}-musl.zip"
+cmd="unzip -oj {fname} -d {bin_path}/{arch_key}"
+
+[lazygit]
+repo="jesseduffield/lazygit"
+tag="v0.61.1"
+version="0.61.1"
+arch.aarch64="arm64"
+fname="lazygit_{version}_linux_{arch}.tar.gz"
+cmd="tar -xf {fname} lazygit && mv lazygit {bin_path}/{arch_key}"
+
+[shfmt]
+repo="mvdan/sh"
+tag="v3.13.1"
+arch.aarch64="arm64"
+arch.x86_64="amd64"
+fname="shfmt_{tag}_linux_{arch}"
+cmd="cp {fname} {bin_path}/{arch_key}/shfmt"
+
+[just]
+repo="casey/just"
+tag="1.49.0"
+fname="just-{tag}-{arch}-unknown-linux-musl.tar.gz"
+cmd="tar -xf {fname} just && mv just {bin_path}/{arch_key}"
+
+[go-task]
+repo="go-task/task"
+tag="v3.50.0"
+arch.aarch64="arm64"
+arch.x86_64="amd64"
+fname="task_linux_{arch}.tar.gz"
+cmd="tar -xf {fname} task && mv task {bin_path}/{arch_key}"
+
+[btop]
+repo="aristocratos/btop"
+tag="v1.4.6"
+fname="btop-{arch}-unknown-linux-musl.tbz"
+cmd="tar -xf {fname} && mv btop/bin/btop {bin_path}/{arch_key} && rm -rf btop"
+
+[rg]
+repo="BurntSushi/ripgrep"
+tag="15.1.0"
+fname.aarch64="ripgrep-{tag}-{arch}-unknown-linux-gnu.tar.gz"
+fname.x86_64="ripgrep-{tag}-{arch}-unknown-linux-musl.tar.gz"
+cmd="tar -xf {fname} --wildcards 'ripgrep-*/rg' --strip-components=1 && mv rg {bin_path}/{arch_key}"
+
+# [clang]
+# repo=""
+# tag="llvmorg-22.1.0"
+# version="22.1.0"
+# arch.aarch64="ARM64"
+# arch.x86_64="X64"
+
